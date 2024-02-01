@@ -9,3 +9,8 @@ The speed will increase as you venture further into space, challenging you to ca
 
 
 Are you up to the challenge?
+
+
+## Controls
+
+Use the spacebar to jump!
