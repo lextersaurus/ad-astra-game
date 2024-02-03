@@ -20,7 +20,7 @@ class Player {
                 this.direction *= -1
                 this.gravity = 1.5
             }
-            if (this.astroTop >= 188 && this.isJumping){
+            if (this.astroTop >= 180 && this.isJumping){
                 this.stop()
                 this.direction = 1
                 this.gravity = 1
