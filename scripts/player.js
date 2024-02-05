@@ -13,20 +13,23 @@ class Player {
     }
 
     jump() {
-        this.timer = setInterval(() => {
-            this.astroTop -= this.movementY * this.direction * this.gravity
-            this.sprite.style.top = `${this.astroTop}px`
-            if (this.astroTop <= 30) {
-                this.direction *= -1
-                this.gravity = 1.5
-            }
-            if (this.astroTop >= 180 && this.isJumping){
-                this.stop()
-                this.direction = 1
-                this.gravity = 1
-                this.isJumping = false
-            }
-        }, 30)
+        if (this.isJumping) return
+        else {
+            this.timer = setInterval(() => {
+                this.astroTop -= this.movementY * this.direction * this.gravity
+                this.sprite.style.top = `${this.astroTop}px`
+                if (this.astroTop <= 30) {
+                    this.direction = -1
+                    this.gravity = 1.5
+                }
+                if (this.astroTop >= 180 && this.isJumping){
+                    this.stop()
+                    this.direction = 1
+                    this.gravity = 1
+                    this.isJumping = false
+                }
+            }, 30)
+        }
     }
     
     stop() {
@@ -45,4 +48,3 @@ let playerHeight = player.offsetHeight
 let astronautY = boardHeight - playerHeight - floorHeight
 
 const astronaut = new Player(30, astronautY, player)
-console.log(astronaut.astroTop)

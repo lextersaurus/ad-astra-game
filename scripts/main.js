@@ -1,7 +1,5 @@
 window.onload = () => {
-    astronaut
     document.addEventListener('keydown', moveAstronaut)
-    console.log(astronaut)
 }
 
 function moveAstronaut(e) {
