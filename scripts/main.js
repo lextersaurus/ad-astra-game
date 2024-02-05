@@ -9,12 +9,11 @@ let playerHeight = 82
 let astronautY = boardHeight  - floorHeight - playerHeight
 
 const astronaut = new Player(30, astronautY, board)
-const meteorite = new Obstacle(800, 187, 110, board, astronaut, spacesObs)
+
 
 window.onload = () => {
   gameStart.start()
   document.addEventListener('keydown', moveAstronaut)
-  spacesObs.push(meteorite)
 }
 
 function moveAstronaut(e) {
@@ -23,4 +22,8 @@ function moveAstronaut(e) {
   }
 }
 
-const gameStart = new Game(astronaut, meteorite)
+function createObs() {
+  return new Obstacle(800, 187, 110, board, astronaut, spacesObs)
+}
+
+const gameStart = new Game(astronaut, createObs)
