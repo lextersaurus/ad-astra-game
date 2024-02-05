@@ -20,8 +20,18 @@ class Game {
     }, 2000)
     this.timer = setInterval(() => {
       this.player.update()
+      this.currentObstacle.checkCollisons()
       this.currentObstacle.move()
-      console.log(this.spacesObs)
+      if (this.currentObstacle.isRemove) {
+        this.spacesObs.shift()
+        this.currentObstacle.removeEnemy()
+        this.currentObstacle.isRemove = false
+      }
+      if (this.player.isDead) {
+          alert('Game Over')
+          clearInterval(this.timer)
+          clearInterval(this.timerId)
+        }
     }, 24)
   }
 }
