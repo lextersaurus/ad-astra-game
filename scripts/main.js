@@ -14,8 +14,6 @@ let astronautY = boardHeight  - floorHeight - playerHeight
 
 const astronaut = new Player(30, astronautY, board)
 
-
-
 function moveAstronaut(e) {
   if ((e.code == 'Space' || e.code == 'ArrowUp') && astronaut.astroTop >= astronautY) {
       astronaut.jump()
