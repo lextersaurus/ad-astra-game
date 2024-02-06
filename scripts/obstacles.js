@@ -10,7 +10,7 @@ class Obstacle {
     this.sprite
     this.timer = null
     this.speed = 30
-    this.isRemove = false
+    this.isRemoved = false
   }
 
   insertObs() {
@@ -27,7 +27,7 @@ class Obstacle {
     this.obsLeft -= this.speed
     this.sprite.style.left = `${this.obsLeft}px`
     if (this.obsLeft <= -130) {
-      this.isRemove = true
+      this.isRemoved = true
     }
   }
 
@@ -35,7 +35,7 @@ class Obstacle {
     this.parent.removeChild(this.sprite)
   }
 
-  checkCollisons() {
+  checkCollisions() {
     if (this.obsLeft < (this.player.astroLeft + this.player.width) &&
        (this.obsLeft + this.width) > this.player.astroLeft &&
        this.obsTop < (this.player.astroTop + this.player.height) &&
