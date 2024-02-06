@@ -16,7 +16,8 @@ body {
 #floor {
   width: 100%;
   height: 38px;
-  background-color: blueviolet;
+  background-image: url(/assets/floor.webp);
+  background-size: contain;
   position: absolute;
   bottom: 0;
 }
