@@ -1,5 +1,6 @@
 window.onload = () => {
   createBackground()
+  createFloorLoop()
   gameStart.start()
   document.addEventListener('keydown', moveAstronaut)
 }
@@ -30,7 +31,7 @@ function createObs() {
 const gameStart = new Game(astronaut, createObs)
 
 
-function createBackground() {
+function createFloorLoop() {
   const floorbg = document.createElement('div')
   floorbg.id = 'floorbg'
   floor.appendChild(floorbg)
@@ -44,7 +45,26 @@ function createBackground() {
   ]
 
   floorbg.animate(keyframes, {
-    duration: 20000,
+    duration: 15000,
+    iterations: Infinity,
+  })
+}
+
+function createBackground() {
+  const background = document.createElement('div')
+  background.id = 'background'
+  board.appendChild(background)
+
+  background.style.width = '100%'
+  background.style.height = '100%'
+  background.style.background = 'url("/assets/board-bg.png")'
+
+  const keyframes = [
+    {backgroundPosition: '200% 0'}
+  ]
+
+  background.animate(keyframes, {
+    duration: 100000,
     iterations: Infinity,
   })
 }
