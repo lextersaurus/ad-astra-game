@@ -11,6 +11,7 @@ class Player {
       this.isJumping = false
       this.gravity = 1
       this.isDead = false
+      this.isMultiplier = false
   }
 
   insertPlayer() {

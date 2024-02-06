@@ -24,4 +24,8 @@ function createObs() {
   return new Obstacle(800, 187, 110, board, astronaut)
 }
 
-const gameStart = new Game(astronaut, createObs, board)
+function createMultiplier() {
+  return new Multiplier(800, 30, 50, board, astronaut)
+}
+
+const gameStart = new Game(astronaut, createObs, board, createMultiplier)

@@ -1,13 +1,18 @@
 class Game {
-  constructor(player, obstacle, parent) {
+  constructor(player, obstacle, parent, multiplier) {
     this.player = player
     this.obstacle = obstacle
     this.parent = parent
+    this.multiplier = multiplier
     this.spacesObs = []
+    this.multiArr = []
     this.currentObstacle = null
+    this.currentMulti = null
     this.score = 0
     this.timerScore = null
-    this.sprite 
+    this.sprite
+    this.timerId = null
+    this.timerMulti = null
   }
 
   addMeteorite() {
@@ -29,6 +34,13 @@ class Game {
     this.sprite.innerText = this.score
   }
 
+  addMultiplier() {
+    const newMultiplier = this.multiplier()
+    this.multiArr.push(newMultiplier)
+    this.currentMulti = newMultiplier
+    this.currentMulti.insertMultiplier()
+  }
+
   start() {
     this.player.insertPlayer()
     this.insertScore()
@@ -39,6 +51,9 @@ class Game {
     this.timerId = setInterval (() => {
       this.addMeteorite()
     }, 2000)
+    this.timerMulti = setInterval(() => {
+      this.addMultiplier()
+    }, 5000)
     this.timer = setInterval(() => {
       this.player.update()
       if (this.currentObstacle !== null) {
@@ -54,6 +69,10 @@ class Game {
             console.log(this.score)
             clearInterval(this.timer)
             clearInterval(this.timerId)
+            clearInterval(this.timerScore)
+        }
+        if (this.player.isMultiplier) {
+          this.score *= 2
         }
       }
     }, 24)

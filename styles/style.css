@@ -42,3 +42,10 @@ body {
   top: 0;
   left: 720px;
 }
+
+.multiplier {
+  height: 50px;
+  width: 50px;
+  color: yellow;
+  position: absolute;
+}
