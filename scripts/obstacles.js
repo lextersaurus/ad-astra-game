@@ -9,7 +9,7 @@ class Obstacle {
     this.height = 60
     this.sprite
     this.timer = null
-    this.speed = 20
+    this.speed = 30
     this.isRemove = false
   }
 
