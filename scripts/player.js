@@ -1,50 +1,44 @@
 class Player {
-    constructor(x, y, sprite) {
-        this.astroTop = y
-        this.astroLeft = x
-        this.sprite = sprite
-        this.sprite.style.top = `${this.astroTop}px`
-        this.sprite.style.left = `${this.astroLeft}px`
-        this.movementY = 10
-        this.timer = null
-        this.direction = 1
-        this.isJumping = false
-        this.gravity = 1
-    }
+  constructor(x, y, parent) {
+      this.astroTop = y
+      this.astroLeft = x
+      this.parent = parent
+      this.sprite
+      this.width = 94
+      this.height = 82
+      this.movementY = 10
+      this.direction = 0
+      this.isJumping = false
+      this.gravity = 1
+      this.isDead = false
+  }
 
-    jump() {
-        if (this.isJumping) return
-        else {
-            this.timer = setInterval(() => {
-                this.astroTop -= this.movementY * this.direction * this.gravity
-                this.sprite.style.top = `${this.astroTop}px`
-                if (this.astroTop <= 30) {
-                    this.direction = -1
-                    this.gravity = 1.5
-                }
-                if (this.astroTop >= 180 && this.isJumping){
-                    this.stop()
-                    this.direction = 1
-                    this.gravity = 1
-                    this.isJumping = false
-                }
-            }, 30)
-        }
-    }
-    
-    stop() {
-        clearInterval(this.timer)
-    }
+  insertPlayer() {
+      let newPlayer = document.createElement('div')
+      newPlayer.setAttribute('id', 'astronaut')
+      newPlayer.style.top = this.astroTop + 'px'
+      newPlayer.style.left = this.astroLeft + 'px'
+      this.parent.appendChild(newPlayer)
+      this.sprite = newPlayer
+  }
+
+
+  update() {
+      this.astroTop -= this.movementY * this.direction * this.gravity
+      this.sprite.style.top = `${this.astroTop}px`
+      if (this.astroTop <= 30 && this.isJumping) {
+          this.direction *= -1
+          this.gravity = 1.5
+      }
+      if (this.astroTop >= 180){
+          this.direction = 0
+          this.gravity = 1
+          this.isJumping = false
+      }
+  }
+
+  jump() {
+      this.direction = 1
+      this.isJumping = true
+  }
 }
-
-const board = document.getElementById('playingArea')
-const player = document.getElementById('astronaut')
-const floor = document.getElementById('floor')
-
-let boardHeight = board.offsetHeight
-let floorHeight = floor.offsetHeight
-let playerHeight = player.offsetHeight
-
-let astronautY = boardHeight - playerHeight - floorHeight
-
-const astronaut = new Player(30, astronautY, player)
