@@ -6,7 +6,7 @@ class Obstacle {
     this.parent = parent
     this.player = player
     this.spacesObs
-    this.height = 75
+    this.height = 60
     this.sprite
     this.timer = null
     this.speed = 20

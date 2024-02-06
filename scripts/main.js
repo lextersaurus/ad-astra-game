@@ -21,7 +21,7 @@ function moveAstronaut(e) {
 }
 
 function createObs() {
-  return new Obstacle(800, 187, 110, board, astronaut)
+  return new Obstacle(800, 187, 80, board, astronaut)
 }
 
 const gameStart = new Game(astronaut, createObs)

@@ -4,7 +4,7 @@ class Player {
       this.astroLeft = x
       this.parent = parent
       this.sprite
-      this.width = 94
+      this.width = 65 
       this.height = 82
       this.movementY = 10
       this.direction = 0

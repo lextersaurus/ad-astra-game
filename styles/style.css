@@ -8,7 +8,7 @@ body {
 #playingArea {
   width: 800px;
   height: 300px;
-  background-color: aquamarine;
+  background-image: url(/assets/background1.png);
   position: relative;
   overflow: hidden;
 }
@@ -22,14 +22,16 @@ body {
 }
 
 #astronaut {
-  width: 94px;
+  width: 60px;
   height: 82px;
-  background-color: brown;
+  background-image: url(/assets/astronaut1.png);
+  background-size: cover;
   position: absolute;
 }
 
 .meteorite {
   height: 75px;
-  background-color: gray;
+  background-image: url(/assets/Meteor1.png);
+  background-size: cover;
   position: absolute;
 }
