@@ -13,7 +13,7 @@ class Player {
       this.isDead = false
   }
 
-  insertPlayer() {
+  insert() {
       let newPlayer = document.createElement('div')
       newPlayer.setAttribute('id', 'astronaut')
       newPlayer.style.top = this.astroTop + 'px'

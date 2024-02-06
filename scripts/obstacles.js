@@ -5,7 +5,7 @@ class Obstacle {
     this.width = width
     this.parent = parent
     this.player = player
-    this.spacesObs
+    this.spaceObstacles
     this.height = 60
     this.sprite
     this.timer = null
@@ -13,7 +13,7 @@ class Obstacle {
     this.isRemoved = false
   }
 
-  insertObs() {
+  insert() {
     let newObs = document.createElement('div')
     newObs.classList.add('meteorite')
     newObs.style.left = `${this.obsLeft}px`
@@ -31,7 +31,7 @@ class Obstacle {
     }
   }
 
-  removeEnemy(){
+  remove(){
     this.parent.removeChild(this.sprite)
   }
 

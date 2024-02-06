@@ -2,36 +2,48 @@ class Game {
   constructor(player, obstacle) {
     this.player = player
     this.obstacle = obstacle
-    this.spacesObs = []
+    this.spaceObstacles = []
     this.currentObstacle = null
   }
 
-  addMeteorite() {
+  addObstacle() {
     const newMeteorite = this.obstacle()
-    this.spacesObs.push(newMeteorite)
-    this.currentObstacle = newMeteorite
-    this.currentObstacle.insertObs()
+    this.spaceObstacles.push(newMeteorite)
+    newMeteorite.insert()
   }
 
   start() {
-    this.player.insertPlayer()
-    this.timerId = setInterval (() => {
-      this.addMeteorite()
+    this.player.insert()
+
+    this.addObstacleIntervalId = setInterval(() => {
+      this.addObstacle()
     }, 2000)
-    this.timer = setInterval(() => {
+
+
+    this.mainIntervalId = setInterval(() => {
       this.player.update()
-      this.currentObstacle.checkCollisions()
-      this.currentObstacle.move()
-      if (this.currentObstacle.isRemoved) {
-        this.spacesObs.shift()
-        this.currentObstacle.removeEnemy()
-        this.currentObstacle.isRemoved = false
-      }
-      if (this.player.isDead) {
-          alert('Game Over')
-          clearInterval(this.timer)
-          clearInterval(this.timerId)
-        }
+      this.updateObstacle()
+
+      if (this.player.isDead) this.gameOver()
     }, 24)
+  }
+
+  updateObstacle() {
+    let currentObstacle = this.spaceObstacles[0]
+    if (currentObstacle) {
+      currentObstacle.move()
+      currentObstacle.checkCollisions()
+
+      if (currentObstacle.isRemoved) {
+        currentObstacle.remove()
+        this.spaceObstacles.shift()
+      }
+    }
+  }
+
+  gameOver() {
+    alert('Game Over')
+    clearInterval(this.mainIntervalId)
+    clearInterval(this.addObstacleIntervalId)
   }
 }
