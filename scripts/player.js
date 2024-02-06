@@ -4,9 +4,9 @@ class Player {
       this.astroLeft = x
       this.parent = parent
       this.sprite
-      this.width = 94
-      this.height = 82
-      this.movementY = 10
+      this.width = 90 
+      this.height = 123
+      this.movementY = 15
       this.direction = 0
       this.isJumping = false
       this.gravity = 1
@@ -30,7 +30,7 @@ class Player {
           this.direction *= -1
           this.gravity = 1.5
       }
-      if (this.astroTop >= 180){
+      if (this.astroTop >= 289){
           this.direction = 0
           this.gravity = 1
           this.isJumping = false
