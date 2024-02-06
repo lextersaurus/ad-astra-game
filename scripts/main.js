@@ -57,14 +57,14 @@ function createBackground() {
 
   background.style.width = '100%'
   background.style.height = '100%'
-  background.style.background = 'url("/assets/board-bg.png")'
+  background.style.background = 'url("/assets/purplebg.png")'
 
   const keyframes = [
     {backgroundPosition: '200% 0'}
   ]
 
   background.animate(keyframes, {
-    duration: 100000,
+    duration: 200000,
     iterations: Infinity,
   })
 }
