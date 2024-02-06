@@ -3,6 +3,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url(/assets/space-bg.png);
+  background-size: cover;
 }
 
 #playingArea {
@@ -11,6 +13,7 @@ body {
   background-image: url(/assets/background1.png);
   position: relative;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 #floor {
