@@ -3,7 +3,6 @@ class Game {
     this.player = player
     this.obstacle = obstacle
     this.spaceObstacles = []
-    this.currentObstacle = null
   }
 
   addObstacle() {
@@ -14,6 +13,7 @@ class Game {
 
   start() {
     this.player.insert()
+    this.createFloor()
 
     this.addObstacleIntervalId = setInterval(() => {
       this.addObstacle()
@@ -45,5 +45,26 @@ class Game {
     alert('Game Over')
     clearInterval(this.mainIntervalId)
     clearInterval(this.addObstacleIntervalId)
+  }
+
+  createFloor() {
+    const floor = document.getElementById('floor')
+    const floorbg = document.createElement('div')
+
+    floorbg.id = 'floorbg'
+    floor.appendChild(floorbg)
+
+    floorbg.style.width = '100%'
+    floorbg.style.height = '100%'
+    floorbg.style.background = 'url("/assets/floorbg.png")'
+
+    const keyframes = [
+      { backgroundPosition: '200% 0' }
+    ]
+
+    floorbg.animate(keyframes, {
+      duration: 15000,
+      iterations: Infinity,
+    })
   }
 }
