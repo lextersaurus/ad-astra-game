@@ -2,7 +2,10 @@ class Game {
   constructor() {
     this.player = null
     this.spaceObstacles = []
+    this.multiArr = []
     this.self = null
+    this.score = 0
+    this.timerScore = null
   }
 
   addAstronaut() {
@@ -15,7 +18,7 @@ class Game {
 
     let astronautY = boardHeight - floorHeight - playerHeight
 
-    this.player = new Player(30, astronautY, board)
+    this.player = new Player(100, astronautY, board)
     this.player.insert()
   }
 
@@ -28,28 +31,68 @@ class Game {
   addObstacle() {
     const board = document.getElementById('playingArea')
     const newMeteorite = new Obstacle(1200, 289, 120, board, this.player)
-    this.spaceObstacles.push(newMeteorite)
-    newMeteorite.insert()
+    const newSpacecraft = new Obstacle(1200, 80, 120, board, this.player)
+    let randomNum = Math.floor(Math.random()*100)
+    if (randomNum <= 30) {
+      this.spaceObstacles.push(newSpacecraft)
+      newSpacecraft.insert()
+    } else {
+      this.spaceObstacles.push(newMeteorite)
+      newMeteorite.insert()
+    }
+  }
+
+  insertScore() {
+    const board = document.getElementById('playingArea')
+    let score = document.createElement('span')
+    score.classList.add('score')
+    score.innerText = this.score
+    board.appendChild(score)
+    this.sprite = score
+  }
+
+  updateScore() {
+    this.sprite.innerText = this.score
+  }
+
+  addMultiplier() {
+    const board = document.getElementById('playingArea')
+    const newMulti = new Multiplier(1200, 40, board, this.player)
+    this.multiArr.push(newMulti)
+    newMulti.insertMultiplier()
   }
 
   start() {
     this.createFloor()
-    
-    const floor = document.getElementById('floor')
-    floor.classList.remove('hidden')
-    
     this.addAstronaut()
-
+    this.insertScore()
+    
     self = this
     document.addEventListener('keydown', this.moveAstronaut)
 
+    this.timerScore = setInterval(() => {
+      this.score += 5
+      if (this.player.isMultiplier) {
+        this.multiArr[0].remove()
+        this.multiArr.shift()
+        this.multiply()
+      }
+      this.updateScore()
+    }, 1000)
+
+
     this.addObstacleIntervalId = setInterval(() => {
       this.addObstacle()
-    }, 2000)
+    }, 1000)
+
+    this.addMultiIntervalId = setInterval(() => {
+      this.addMultiplier()
+    }, 6000)
 
     this.mainIntervalId = setInterval(() => {
       this.player.update()
       this.updateObstacle()
+      this.updateMultiplier()
 
       if (this.player.isDead) this.gameOver()
     }, 24)
@@ -68,18 +111,33 @@ class Game {
     }
   }
 
-  gameOver() {
-    this.reStart()
-    clearInterval(this.mainIntervalId)
-    clearInterval(this.addObstacleIntervalId)
+  updateMultiplier() {
+    let currentMulti = this.multiArr[0]
+    if (currentMulti) {
+      currentMulti.checkTaken()
+      if (this.player.isMultiplier) currentMulti.remove()
+      currentMulti.move()
+
+      if (currentMulti.isRemoved) {
+        currentMulti.remove()
+        this.multiArr.shift()
+      }
+    }
   }
 
-  reStart() {
-    document.getElementById('final-screen').classList.remove('hidden')
-    const floor = document.getElementById('floor')
-    floor.classList.add('hidden')
-    this.player.sprite.classList.add('hidden')
-    this.spaceObstacles[0].sprite.classList.add('hidden')
+  gameOver() {
+    alert('Game Over')
+    clearInterval(this.mainIntervalId)
+    clearInterval(this.addObstacleIntervalId)
+    clearInterval(this.timerScore)
+    clearInterval(this.addMultiIntervalId)
+  }
+
+  multiply() {
+    if (this.player.isMultiplier) {
+      this.score *= 2
+      this.player.isMultiplier = false
+    }
   }
 
   createFloor() {
