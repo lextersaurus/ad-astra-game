@@ -34,8 +34,12 @@ class Game {
 
   start() {
     this.createFloor()
-    this.addAstronaut()
     
+    const floor = document.getElementById('floor')
+    floor.classList.remove('hidden')
+    
+    this.addAstronaut()
+
     self = this
     document.addEventListener('keydown', this.moveAstronaut)
 
@@ -67,9 +71,17 @@ class Game {
   }
 
   gameOver() {
-    alert('Game Over')
+    this.reStart()
     clearInterval(this.mainIntervalId)
     clearInterval(this.addObstacleIntervalId)
+  }
+
+  reStart() {
+    document.getElementById('final-screen').classList.remove('hidden')
+    const floor = document.getElementById('floor')
+    floor.classList.add('hidden')
+    this.player.sprite.classList.add('hidden')
+    this.spaceObstacles[0].sprite.classList.add('hidden')
   }
 
   createFloor() {

@@ -6,4 +6,9 @@ window.onload = () => {
     document.getElementById('title-screen').classList.add('hidden')
     game.start()
   })
+
+  document.getElementById('final-button').addEventListener('click', () => {
+    document.getElementById('final-screen').classList.add('hidden')
+    game.start()
+  })
 }
