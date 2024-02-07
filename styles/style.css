@@ -219,10 +219,26 @@ body {
   animation: meteoriteAnimation 2s infinite;
 }
 
-
-
 @keyframes meteoriteAnimation {
   50% {
     transform: rotate(-180deg);
   }
+}
+
+.multiplier {
+  height: 50px;
+  width: 50px;
+  background-image: url(/assets/Star.png);
+  background-size: cover;
+  position: absolute;
+}
+
+.score {
+  width: 80px;
+  height: 40px;
+  font-size: 24px;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 1120px;
 }
