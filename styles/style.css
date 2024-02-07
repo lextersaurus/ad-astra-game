@@ -36,7 +36,7 @@ body {
   position: relative;
 }
 
-#title-screen {
+.screen {
   position: absolute;
   top: 0;
   left: 0;
@@ -45,18 +45,10 @@ body {
   overflow: hidden;
 }
 
-#final-screen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
 .main-content {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 500px;
   margin: auto;
   text-align: center;
   margin-top: 100px;

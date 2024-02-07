@@ -7,7 +7,8 @@ window.onload = () => {
     game.start()
   })
 
-  /* if (game.isGameOver) {
-    document.getElementById('final_screen').classList.remove('hidden')
-  } */
+  document.getElementById('final-button').addEventListener('click', () => {
+    document.getElementById('final-screen').classList.add('hidden')
+    game.start()
+  })
 }
