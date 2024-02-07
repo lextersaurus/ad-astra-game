@@ -3,6 +3,8 @@ class Game {
     this.player = null
     this.spaceObstacles = []
     this.self = null
+    this.score = 0
+    this.timerScore = null
   }
 
   addAstronaut() {
@@ -28,15 +30,25 @@ class Game {
   addObstacle() {
     const board = document.getElementById('playingArea')
     const newMeteorite = new Obstacle(1200, 289, 120, board, this.player)
-    this.spaceObstacles.push(newMeteorite)
-    newMeteorite.insert()
+    const newSpacecraft = new Obstacle(1200, 80, 120, board, this.player)
+    let randomNum = Math.floor(Math.random()*100)
+    if (randomNum <= 30) {
+      this.spaceObstacles.push(newSpacecraft)
+      newSpacecraft.insert()
+      console.log(randomNum)
+    } else {
+      this.spaceObstacles.push(newMeteorite)
+      newMeteorite.insert()
+      console.log(randomNum)
+    }
   }
 
   insertScore() {
+    const board = document.getElementById('playingArea')
     let score = document.createElement('span')
     score.classList.add('score')
     score.innerText = this.score
-    this.parent.appendChild(score)
+    board.appendChild(score)
     this.sprite = score
   }
 
@@ -44,19 +56,25 @@ class Game {
     this.sprite.innerText = this.score
   }
 
-  addMultiplier() {
+  /* addMultiplier() {
     const newMultiplier = this.multiplier()
     this.multiArr.push(newMultiplier)
     this.currentMulti = newMultiplier
     this.currentMulti.insertMultiplier()
-  }
+  } */
 
   start() {
     this.createFloor()
     this.addAstronaut()
+    this.insertScore()
     
     self = this
     document.addEventListener('keydown', this.moveAstronaut)
+
+    this.timerScore = setInterval(() => {
+      this.score += 5
+      this.updateScore()
+    }, 1000)
 
 
     this.addObstacleIntervalId = setInterval(() => {
@@ -89,6 +107,7 @@ class Game {
     alert('Game Over')
     clearInterval(this.mainIntervalId)
     clearInterval(this.addObstacleIntervalId)
+    clearInterval(this.timerScore)
   }
 
   createFloor() {
