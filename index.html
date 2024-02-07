@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Ad Astra</title>
     <link rel="stylesheet" href="styles/style.css" />
     <script src="scripts/player.js" defer></script>
     <script src="scripts/obstacles.js" defer></script>
@@ -12,8 +12,19 @@
   </head>
 
   <body>
-    <div id="playingArea">
-      <div id="floor"></div>
+    <div id="game">
+      <div id="playingArea">
+        <div id="floor"></div>
+      </div>
+      <div id="title-screen">
+        <div class="main-content">
+          <span>Ad astra</span>
+          <button id="start-button">Start</button>
+        </div>
+        <div class="astro-fly" id="astro-fly1"></div>
+        <div class="astro-fly" id="astro-fly2"></div>
+        <div class="astro-fly" id="astro-fly3"></div>
+        </div>
     </div>
   </body>
 </html>

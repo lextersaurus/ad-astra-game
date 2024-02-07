@@ -1,31 +1,9 @@
 window.onload = () => {
-  gameStart.start()
-  document.addEventListener('keydown', moveAstronaut)
+  const game = new Game()
+
+  game.createBackground()
+  document.getElementById('start-button').addEventListener('click', () => {
+    document.getElementById('title-screen').classList.add('hidden')
+    game.start()
+  })
 }
-
-const board = document.getElementById('playingArea')
-const floor = document.getElementById('floor')
-
-let boardHeight = board.offsetHeight
-let floorHeight = floor.offsetHeight
-let playerHeight = 82
-
-let astronautY = boardHeight  - floorHeight - playerHeight
-
-const astronaut = new Player(30, astronautY, board)
-
-function moveAstronaut(e) {
-  if ((e.code == 'Space' || e.code == 'ArrowUp') && astronaut.astroTop >= astronautY) {
-      astronaut.jump()
-  }
-}
-
-function createObs() {
-  return new Obstacle(800, 187, 110, board, astronaut)
-}
-
-function createMultiplier() {
-  return new Multiplier(800, 30, 50, board, astronaut)
-}
-
-const gameStart = new Game(astronaut, createObs, board, createMultiplier)

@@ -1,36 +1,144 @@
 body {
   height: 100vh;
   display: flex;
+  margin: 0;
   justify-content: center;
   align-items: center;
+  background-image: url(/assets/space-bg.png);
+  background-size: cover;
 }
 
 #playingArea {
-  width: 800px;
-  height: 300px;
-  background-color: aquamarine;
+  width: 1200px;
+  height: 450px;
   position: relative;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 #floor {
   width: 100%;
   height: 38px;
-  background-color: blueviolet;
   position: absolute;
   bottom: 0;
 }
 
 #astronaut {
-  width: 94px;
-  height: 82px;
-  background-color: brown;
+  width: 90px;
+  height: 123px;
+  background-image: url(/assets/astronaut1.png);
+  background-size: cover;
   position: absolute;
 }
 
+#game {
+  position: relative;
+}
+
+#title-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.main-content  {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: auto;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.main-content span {
+  font-weight: 900;
+  font-size: 3em;
+  color: white;
+  margin-bottom: 1em;
+}
+
+.main-content button {
+  height: 100px;
+  width: 100%;
+}
+
+@keyframes bounceAnimation1 {
+  0% {
+    translate: 0px;
+    rotate: 0deg;
+  }
+
+  100% {
+    translate: -30vw 80vh;
+    rotate: 360deg;
+  }
+}
+@keyframes bounceAnimation2 {
+  0% {
+    translate: 0px;
+    rotate: 0deg;
+  }
+
+  100% {
+    translate: -100vw -20vh;
+    rotate: 360deg;
+  }
+}
+
+@keyframes bounceAnimation3 {
+  0% {
+    translate: 0px;
+    rotate: 0deg;
+  }
+
+  100% {
+    translate: 60vw 60vh;
+    rotate: 360deg;
+  }
+}
+
+.astro-fly {
+  background-image: url(../assets/astronaut1.png);
+  height: 100px;
+  width: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+#astro-fly1 {
+  right: 0;
+  top: -100px;
+  animation: bounceAnimation1 15s infinite;
+  width: 150px;
+}
+
+#astro-fly2 {
+  width: 80px;
+  right: -0px;
+  bottom: 0;
+  animation: bounceAnimation2 10s infinite;
+  
+}
+
+#astro-fly3 {
+  left: -50px;
+  top: 0;
+  animation: bounceAnimation3 13s infinite;
+  
+}
+
+.hidden {
+  display: none;
+}
+
 .meteorite {
-  height: 75px;
-  background-color: gray;
+  height: 112.5px;
+  background-image: url(/assets/Meteor1.png);
+  background-size: cover;
   position: absolute;
 }
 

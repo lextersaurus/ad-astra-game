@@ -5,15 +5,15 @@ class Obstacle {
     this.width = width
     this.parent = parent
     this.player = player
-    this.spacesObs
-    this.height = 75
+    this.spaceObstacles
+    this.height = 60
     this.sprite
     this.timer = null
-    this.speed = 20
-    this.isRemove = false
+    this.speed = 30
+    this.isRemoved = false
   }
 
-  insertObs() {
+  insert() {
     let newObs = document.createElement('div')
     newObs.classList.add('meteorite')
     newObs.style.left = `${this.obsLeft}px`
@@ -27,15 +27,15 @@ class Obstacle {
     this.obsLeft -= this.speed
     this.sprite.style.left = `${this.obsLeft}px`
     if (this.obsLeft <= -130) {
-      this.isRemove = true
+      this.isRemoved = true
     }
   }
 
-  removeEnemy(){
+  remove(){
     this.parent.removeChild(this.sprite)
   }
 
-  checkCollisons() {
+  checkCollisions() {
     if (this.obsLeft < (this.player.astroLeft + this.player.width) &&
        (this.obsLeft + this.width) > this.player.astroLeft &&
        this.obsTop < (this.player.astroTop + this.player.height) &&
