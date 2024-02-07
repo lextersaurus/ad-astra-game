@@ -40,11 +40,7 @@ class Obstacle {
        (this.obsLeft + this.width) > this.player.astroLeft &&
        this.obsTop < (this.player.astroTop + this.player.height) &&
        (this.obsTop + this.height) > this.player.astroTop) {
-        if (this.width === 120) {
-          this.player.isDead = true
-        } else {
-          
-        }
+      this.player.isDead = true
     }
   }
 }

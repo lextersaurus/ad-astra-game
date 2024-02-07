@@ -2,6 +2,7 @@ class Game {
   constructor() {
     this.player = null
     this.spaceObstacles = []
+    this.multiArr = []
     this.self = null
     this.score = 0
     this.timerScore = null
@@ -35,11 +36,9 @@ class Game {
     if (randomNum <= 30) {
       this.spaceObstacles.push(newSpacecraft)
       newSpacecraft.insert()
-      console.log(randomNum)
     } else {
       this.spaceObstacles.push(newMeteorite)
       newMeteorite.insert()
-      console.log(randomNum)
     }
   }
 
@@ -56,12 +55,12 @@ class Game {
     this.sprite.innerText = this.score
   }
 
-  /* addMultiplier() {
-    const newMultiplier = this.multiplier()
-    this.multiArr.push(newMultiplier)
-    this.currentMulti = newMultiplier
-    this.currentMulti.insertMultiplier()
-  } */
+  addMultiplier() {
+    const board = document.getElementById('playingArea')
+    const newMulti = new Multiplier(1200, 40, board, this.player)
+    this.multiArr.push(newMulti)
+    newMulti.insertMultiplier()
+  }
 
   start() {
     this.createFloor()
@@ -73,18 +72,27 @@ class Game {
 
     this.timerScore = setInterval(() => {
       this.score += 5
+      if (this.player.isMultiplier) {
+        this.multiply()
+        this.multiArr[0].remove()
+        this.multiArr.shift()
+      }
       this.updateScore()
     }, 1000)
 
 
     this.addObstacleIntervalId = setInterval(() => {
       this.addObstacle()
-    }, 2000)
+    }, 1000)
 
+    this.addMultiIntervalId = setInterval(() => {
+      this.addMultiplier()
+    }, 6000)
 
     this.mainIntervalId = setInterval(() => {
       this.player.update()
       this.updateObstacle()
+      this.updateMultiplier()
 
       if (this.player.isDead) this.gameOver()
     }, 24)
@@ -93,12 +101,26 @@ class Game {
   updateObstacle() {
     let currentObstacle = this.spaceObstacles[0]
     if (currentObstacle) {
-      currentObstacle.move()
       currentObstacle.checkCollisions()
+      currentObstacle.move()
 
       if (currentObstacle.isRemoved) {
         currentObstacle.remove()
         this.spaceObstacles.shift()
+      }
+    }
+  }
+
+  updateMultiplier() {
+    let currentMulti = this.multiArr[0]
+    if (currentMulti) {
+      currentMulti.checkTaken()
+      currentMulti.move()
+      console.log(this.player.isMultiplier)
+
+      if (currentMulti.isRemoved) {
+        currentMulti.remove()
+        this.multiArr.shift()
       }
     }
   }
@@ -108,6 +130,14 @@ class Game {
     clearInterval(this.mainIntervalId)
     clearInterval(this.addObstacleIntervalId)
     clearInterval(this.timerScore)
+    clearInterval(this.addMultiIntervalId)
+  }
+
+  multiply() {
+    if (this.player.isMultiplier) {
+      this.score *= 2
+      this.player.isMultiplier = false
+    }
   }
 
   createFloor() {

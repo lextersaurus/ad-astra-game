@@ -12,6 +12,7 @@ class Player {
         this.isDead = false
         this.jumpStrength = 22
         this.initialTop = y
+        this.isMultiplier = false
     }
   
     insert() {

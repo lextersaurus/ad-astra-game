@@ -5,10 +5,10 @@ class Multiplier {
     this.parent = parent
     this.player = player
     this.sprite
-    this.speed = 20
+    this.speed = 30
     this.height = 50
     this.width = 50
-    this.isRemove = false
+    this.isRemoved = false
   }
 
   insertMultiplier() {
@@ -24,15 +24,15 @@ class Multiplier {
     this.multiLeft -= this.speed
     this.sprite.style.left = `${this.multiLeft}px`
     if (this.multiLeft <= -130) {
-      this.isRemove = true
+      this.isRemoved = true
     }
   }
 
-  removeEnemy(){
+  remove(){
     this.parent.removeChild(this.sprite)
   }
 
-  checkCollisons() {
+  checkTaken() {
     if (this.multiLeft < (this.player.astroLeft + this.player.width) &&
        (this.multiLeft + this.width) > this.player.astroLeft &&
        this.multiTop < (this.player.astroTop + this.player.height) &&

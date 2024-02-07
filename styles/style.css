@@ -154,7 +154,7 @@ body {
 .multiplier {
   height: 50px;
   width: 50px;
-  color: yellow;
+  background-color: white;
   position: absolute;
 }
 
