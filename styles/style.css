@@ -6,6 +6,7 @@ body {
   align-items: center;
   background-image: url(/assets/space-bg.png);
   background-size: cover;
+  font-family: 'Pixelify Sans', sans-serif;
 }
 
 #playingArea {
@@ -29,6 +30,169 @@ body {
   background-image: url(/assets/astronaut1.png);
   background-size: cover;
   position: absolute;
+}
+
+#game {
+  position: relative;
+}
+
+#title-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: auto;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.main-content span {
+  font-weight: 900;
+  font-size: 5rem;
+  color: white;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+}
+
+.main-content button {
+  height: 100px;
+  width: 200px;
+  margin: auto;
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: white;
+  background-color: transparent;
+  border: none;
+  text-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 8px #ff00e5, 0 0 10px #ff00e5, 0 0 15px #ff00e5;
+  transition: all 1s;
+}
+
+.main-content button:hover {
+  text-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 8px #ff00e5, 0 0 10px #ff00e5, 0 0 15px #ff00e5, 0 0 20px #ff00e5, 0 0 25px #ff00e5, 0 0 30px #ff00e5;
+}
+
+.neon-text {
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 82px #ff00e5,
+    0 0 42px #ff00e5,
+    0 0 92px #ff00e5,
+    0 0 102px #ff00e5,
+    0 0 151px #ff00e5;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+
+    text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #ff00e5,
+      0 0 80px #ff00e5,
+      0 0 90px #ff00e5,
+      0 0 100px #ff00e5,
+      0 0 150px #ff00e5;
+
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+
+
+@keyframes bounceAnimation1 {
+  0% {
+    translate: 0px;
+    rotate: 0deg;
+  }
+
+  100% {
+    translate: -30vw 80vh;
+    rotate: 360deg;
+  }
+}
+
+@keyframes bounceAnimation2 {
+  0% {
+    translate: 0px;
+    rotate: 0deg;
+  }
+
+  100% {
+    translate: -100vw -20vh;
+    rotate: 360deg;
+  }
+}
+
+@keyframes bounceAnimation3 {
+  0% {
+    translate: 0px;
+    rotate: 0deg;
+  }
+
+  100% {
+    translate: 60vw 60vh;
+    rotate: 360deg;
+  }
+}
+
+.astro-fly {
+  background-image: url(../assets/astronaut1.png);
+  height: 100px;
+  width: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+#astro-fly1 {
+  right: 0;
+  top: -100px;
+  animation: bounceAnimation1 15s infinite;
+  width: 150px;
+}
+
+#astro-fly2 {
+  width: 80px;
+  right: -100px;
+  bottom: 0;
+  animation: bounceAnimation2 10s infinite;
+
+}
+
+#astro-fly3 {
+  left: -50px;
+  top: 0;
+  animation: bounceAnimation3 13s infinite;
+
+}
+
+.hidden {
+  display: none;
 }
 
 .meteorite {
