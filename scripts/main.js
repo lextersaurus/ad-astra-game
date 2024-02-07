@@ -1,4 +1,10 @@
 window.onload = () => {
+   const musicAdAstra = new Audio('/assets/sounds/Race-to-Mars.mp3');
+
+   musicAdAstra.loop = true
+   musicAdAstra.play()
+   musicAdAstra.volume = 0.5
+  
   const game = new Game()
 
   game.createBackground()

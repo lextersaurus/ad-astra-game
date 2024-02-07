@@ -43,11 +43,9 @@ class Game {
     self = this
     document.addEventListener('keydown', this.moveAstronaut)
 
-
     this.addObstacleIntervalId = setInterval(() => {
       this.addObstacle()
     }, 2000)
-
 
     this.mainIntervalId = setInterval(() => {
       this.player.update()
@@ -60,8 +58,8 @@ class Game {
   updateObstacle() {
     let currentObstacle = this.spaceObstacles[0]
     if (currentObstacle) {
-      currentObstacle.move()
       currentObstacle.checkCollisions()
+      currentObstacle.move()
 
       if (currentObstacle.isRemoved) {
         currentObstacle.remove()
