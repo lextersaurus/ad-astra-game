@@ -88,7 +88,7 @@ class Game {
 
     this.addObstacleIntervalId = setInterval(() => {
       this.addObstacle()
-    }, 1000)
+    }, 1300)
 
     this.addMultiIntervalId = setInterval(() => {
       this.addMultiplier()
@@ -148,6 +148,12 @@ class Game {
     this.player.sprite.classList.add('hidden')
     this.spaceObstacles[0].sprite.classList.add('hidden')
     this.multiArr[0].sprite.classList.add('hidden')
+    this.player = null
+    this.spaceObstacles = []
+    this.multiArr = []
+    this.self = null
+    this.score = 0
+    this.timerScore = null
   }
 
   multiply() {
