@@ -69,6 +69,9 @@ class Game {
   }
 
   gameOver() {
+    const wilhelmscream = new Audio('./assets/sounds/wilhelmscream.mp3') 
+    wilhelmscream.play()
+
     this.reStart()
     clearInterval(this.mainIntervalId)
     clearInterval(this.addObstacleIntervalId)
