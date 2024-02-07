@@ -130,11 +130,11 @@ class Game {
   }
 
   gameOver() {
-    this.reStart()
     clearInterval(this.mainIntervalId)
     clearInterval(this.addObstacleIntervalId)
     clearInterval(this.timerScore)
     clearInterval(this.addMultiIntervalId)
+    this.reStart()
   }
 
   multiply() {
