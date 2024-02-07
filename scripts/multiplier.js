@@ -29,7 +29,7 @@ class Multiplier {
   }
 
   remove(){
-    this.parent.removeChild(this.sprite)
+    this.sprite.remove()
   }
 
   checkTaken() {

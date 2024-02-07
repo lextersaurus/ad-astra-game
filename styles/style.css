@@ -142,19 +142,11 @@ body {
   position: absolute;
 }
 
-.score {
-  width: 80px;
-  height: 40px;
-  color: black;
-  position: absolute;
-  top: 0;
-  left: 720px;
-}
-
 .multiplier {
   height: 50px;
   width: 50px;
-  background-color: white;
+  background-image: url(/assets/Star.png);
+  background-size: cover;
   position: absolute;
 }
 

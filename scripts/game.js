@@ -18,7 +18,7 @@ class Game {
 
     let astronautY = boardHeight - floorHeight - playerHeight
 
-    this.player = new Player(30, astronautY, board)
+    this.player = new Player(100, astronautY, board)
     this.player.insert()
   }
 
@@ -73,9 +73,9 @@ class Game {
     this.timerScore = setInterval(() => {
       this.score += 5
       if (this.player.isMultiplier) {
-        this.multiply()
         this.multiArr[0].remove()
         this.multiArr.shift()
+        this.multiply()
       }
       this.updateScore()
     }, 1000)
@@ -115,8 +115,8 @@ class Game {
     let currentMulti = this.multiArr[0]
     if (currentMulti) {
       currentMulti.checkTaken()
+      if (this.player.isMultiplier) currentMulti.remove()
       currentMulti.move()
-      console.log(this.player.isMultiplier)
 
       if (currentMulti.isRemoved) {
         currentMulti.remove()
