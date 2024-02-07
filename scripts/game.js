@@ -6,6 +6,7 @@ class Game {
     this.self = null
     this.score = 0
     this.timerScore = null
+    this.currentScore
   }
 
   addAstronaut() {
@@ -30,8 +31,8 @@ class Game {
 
   addObstacle() {
     const board = document.getElementById('playingArea')
-    const newMeteorite = new Obstacle(1200, 289, 120, board, this.player)
-    const newSpacecraft = new Obstacle(1200, 80, 120, board, this.player)
+    const newMeteorite = new Obstacle(1200, 289, 120, board, this.player, 'meteorite')
+    const newSpacecraft = new Obstacle(1200, 80, 120, board, this.player, 'spaceCraft')
     let randomNum = Math.floor(Math.random()*100)
     if (randomNum <= 30) {
       this.spaceObstacles.push(newSpacecraft)
@@ -48,11 +49,11 @@ class Game {
     score.classList.add('score')
     score.innerText = this.score
     board.appendChild(score)
-    this.sprite = score
+    this.currentScore = score
   }
 
   updateScore() {
-    this.sprite.innerText = this.score
+    this.currentScore.innerText = this.score
   }
 
   addMultiplier() {
@@ -64,6 +65,10 @@ class Game {
 
   start() {
     this.createFloor()
+    
+    const floor = document.getElementById('floor')
+    floor.classList.remove('hidden')
+    
     this.addAstronaut()
     this.insertScore()
     
@@ -94,7 +99,10 @@ class Game {
       this.updateObstacle()
       this.updateMultiplier()
 
-      if (this.player.isDead) this.gameOver()
+      if (this.player.isDead) {
+        this.stopScore()
+        this.gameOver()
+      }
     }, 24)
   }
 
@@ -126,11 +134,20 @@ class Game {
   }
 
   gameOver() {
-    alert('Game Over')
     clearInterval(this.mainIntervalId)
     clearInterval(this.addObstacleIntervalId)
     clearInterval(this.timerScore)
     clearInterval(this.addMultiIntervalId)
+    this.reStart()
+  }
+
+  reStart() {
+    document.getElementById('final-screen').classList.remove('hidden')
+    const floor = document.getElementById('floor')
+    floor.classList.add('hidden')
+    this.player.sprite.classList.add('hidden')
+    this.spaceObstacles[0].sprite.classList.add('hidden')
+    this.multiArr[0].sprite.classList.add('hidden')
   }
 
   multiply() {
@@ -138,6 +155,12 @@ class Game {
       this.score *= 2
       this.player.isMultiplier = false
     }
+  }
+
+  stopScore() {
+    this.score = 0
+    this.currentScore.innerText = 0
+    this.currentScore.classList.add('hidden')
   }
 
   createFloor() {

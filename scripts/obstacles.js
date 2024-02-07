@@ -1,10 +1,11 @@
 class Obstacle {
-  constructor(x, y, width, parent, player) {
+  constructor(x, y, width, parent, player, classList) {
     this.obsLeft = x
     this.obsTop = y
     this.width = width
     this.parent = parent
     this.player = player
+    this.classList = classList
     this.spaceObstacles
     this.height = 60
     this.sprite
@@ -15,7 +16,7 @@ class Obstacle {
 
   insert() {
     let newObs = document.createElement('div')
-    newObs.classList.add('meteorite')
+    newObs.classList.add(this.classList)
     newObs.style.left = `${this.obsLeft}px`
     newObs.style.top = `${this.obsTop}px`
     newObs.style.width = `${this.width}px`

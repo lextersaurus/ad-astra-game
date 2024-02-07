@@ -197,3 +197,11 @@ body {
   top: 0;
   left: 1120px;
 }
+
+.spaceCraft {
+  height: 112.5px;
+  background-image: url(/assets/Ship6.png);
+  background-size: cover;
+  position: absolute;
+  transform: rotate(180deg);
+}
