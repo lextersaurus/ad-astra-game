@@ -3,6 +3,7 @@ class Game {
     this.player = null
     this.spaceObstacles = []
     this.self = null
+    this.isGameOver = false
   }
 
   addAstronaut() {
@@ -67,7 +68,10 @@ class Game {
   }
 
   gameOver() {
-    alert('Game Over')
+    //alert('Game Over')
+    //this.isGameOver = true
+    document.getElementById('final_screen').classList.remove('hidden')
+    console.log(this.isGameOver)
     clearInterval(this.mainIntervalId)
     clearInterval(this.addObstacleIntervalId)
   }

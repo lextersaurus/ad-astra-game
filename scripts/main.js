@@ -6,4 +6,8 @@ window.onload = () => {
     document.getElementById('title-screen').classList.add('hidden')
     game.start()
   })
+
+  /* if (game.isGameOver) {
+    document.getElementById('final_screen').classList.remove('hidden')
+  } */
 }
