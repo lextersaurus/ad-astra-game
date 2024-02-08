@@ -7,6 +7,7 @@ class Game {
     this.score = 0
     this.timerScore = null
     this.currentScore
+    this.powerUpSound = new Audio('assets/sounds/poweruptaken.wav')
   }
 
   addAstronaut() {
@@ -123,7 +124,10 @@ class Game {
     let currentMulti = this.multiArr[0]
     if (currentMulti) {
       currentMulti.checkTaken()
-      if (this.player.isMultiplier) currentMulti.remove()
+      if (this.player.isMultiplier) {
+        currentMulti.remove()
+        this.powerUpSound.play()
+      }
       currentMulti.move()
 
       if (currentMulti.isRemoved) {
