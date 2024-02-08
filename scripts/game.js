@@ -6,6 +6,8 @@ class Game {
     this.self = null
     this.score = 0
     this.timerScore = null
+    this.currentScore
+    this.powerUpSound = new Audio('assets/sounds/poweruptaken.wav')
   }
 
   addAstronaut() {
@@ -30,8 +32,8 @@ class Game {
 
   addObstacle() {
     const board = document.getElementById('playingArea')
-    const newMeteorite = new Obstacle(1200, 289, 120, board, this.player)
-    const newSpacecraft = new Obstacle(1200, 80, 120, board, this.player)
+    const newMeteorite = new Obstacle(1200, 289, 120, board, this.player, 'meteorite')
+    const newSpacecraft = new Obstacle(1200, 80, 120, board, this.player, 'spaceCraft')
     let randomNum = Math.floor(Math.random()*100)
     if (randomNum <= 30) {
       this.spaceObstacles.push(newSpacecraft)
@@ -48,11 +50,11 @@ class Game {
     score.classList.add('score')
     score.innerText = this.score
     board.appendChild(score)
-    this.sprite = score
+    this.currentScore = score
   }
 
   updateScore() {
-    this.sprite.innerText = this.score
+    this.currentScore.innerText = this.score
   }
 
   addMultiplier() {
@@ -87,7 +89,7 @@ class Game {
 
     this.addObstacleIntervalId = setInterval(() => {
       this.addObstacle()
-    }, 1000)
+    }, 1300)
 
     this.addMultiIntervalId = setInterval(() => {
       this.addMultiplier()
@@ -98,7 +100,10 @@ class Game {
       this.updateObstacle()
       this.updateMultiplier()
 
-      if (this.player.isDead) this.gameOver()
+      if (this.player.isDead) {
+        this.stopScore()
+        this.gameOver()
+      }
     }, 24)
   }
 
@@ -119,7 +124,10 @@ class Game {
     let currentMulti = this.multiArr[0]
     if (currentMulti) {
       currentMulti.checkTaken()
-      if (this.player.isMultiplier) currentMulti.remove()
+      if (this.player.isMultiplier) {
+        currentMulti.remove()
+        this.powerUpSound.play()
+      }
       currentMulti.move()
 
       if (currentMulti.isRemoved) {
@@ -132,13 +140,28 @@ class Game {
   gameOver() {
     const wilhelmscream = new Audio('./assets/sounds/wilhelmscream.mp3') 
     wilhelmscream.play()
+    wilhelmscream.volume = 0.5
 
-    this.reStart()
     clearInterval(this.mainIntervalId)
     clearInterval(this.addObstacleIntervalId)
     clearInterval(this.timerScore)
     clearInterval(this.addMultiIntervalId)
     this.reStart()
+  }
+
+  reStart() {
+    document.getElementById('final-screen').classList.remove('hidden')
+    const floor = document.getElementById('floor')
+    floor.classList.add('hidden')
+    this.player.sprite.classList.add('hidden')
+    this.spaceObstacles[0].sprite.classList.add('hidden')
+    this.multiArr[0].sprite.classList.add('hidden')
+    this.player = null
+    this.spaceObstacles = []
+    this.multiArr = []
+    this.self = null
+    this.score = 0
+    this.timerScore = null
   }
 
   multiply() {
@@ -148,12 +171,10 @@ class Game {
     }
   }
 
-  reStart() {
-    document.getElementById('final-screen').classList.remove('hidden')
-    const floor = document.getElementById('floor')
-    floor.classList.add('hidden')
-    this.player.sprite.classList.add('hidden')
-    this.spaceObstacles[0].sprite.classList.add('hidden')
+  stopScore() {
+    this.score = 0
+    this.currentScore.innerText = 0
+    this.currentScore.classList.add('hidden')
   }
 
   createFloor() {

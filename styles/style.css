@@ -6,7 +6,7 @@ body {
   align-items: center;
   background-image: url(/assets/space-bg.png);
   background-size: cover;
-  font-family: 'Pixelify Sans', sans-serif;
+  font-family: "Pixelify Sans", sans-serif;
 }
 
 #playingArea {
@@ -82,7 +82,7 @@ body {
   height: 100px;
   width: 200px;
   margin: auto;
-  font-family: 'Pixelify Sans', sans-serif;
+  font-family: "Pixelify Sans", sans-serif;
   font-size: 2em;
   text-transform: uppercase;
   color: white;
@@ -98,20 +98,11 @@ body {
 
 .neon-text {
   color: #fff;
-  text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 82px #ff00e5,
-    0 0 42px #ff00e5,
-    0 0 92px #ff00e5,
-    0 0 102px #ff00e5,
-    0 0 151px #ff00e5;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 82px #ff00e5, 0 0 42px #ff00e5, 0 0 92px #ff00e5, 0 0 102px #ff00e5, 0 0 151px #ff00e5;
   animation: flicker 1.5s infinite alternate;
 }
 
 @keyframes flicker {
-
   0%,
   18%,
   22%,
@@ -119,17 +110,7 @@ body {
   53%,
   57%,
   100% {
-
-    text-shadow:
-      0 0 4px #fff,
-      0 0 11px #fff,
-      0 0 19px #fff,
-      0 0 40px #ff00e5,
-      0 0 80px #ff00e5,
-      0 0 90px #ff00e5,
-      0 0 100px #ff00e5,
-      0 0 150px #ff00e5;
-
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #ff00e5, 0 0 80px #ff00e5, 0 0 90px #ff00e5, 0 0 100px #ff00e5, 0 0 150px #ff00e5;
   }
 
   20%,
@@ -138,7 +119,6 @@ body {
     text-shadow: none;
   }
 }
-
 
 @keyframes bounceAnimation1 {
   0% {
@@ -197,14 +177,12 @@ body {
   right: -100px;
   bottom: 0;
   animation: bounceAnimation2 10s infinite;
-
 }
 
 #astro-fly3 {
   left: -50px;
   top: 0;
   animation: bounceAnimation3 13s infinite;
-
 }
 
 .hidden {
@@ -234,11 +212,21 @@ body {
 }
 
 .score {
+  font-family: "Roboto";
+  text-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 8px #ff00e5, 0 0 10px #ff00e5, 0 0 15px #ff00e5;
   width: 80px;
   height: 40px;
-  font-size: 24px;
+  font-size: 36px;
   color: white;
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 1120px;
+}
+
+.spaceCraft {
+  height: 112.5px;
+  background-image: url(/assets/Ship6.png);
+  background-size: cover;
+  position: absolute;
+  transform: rotate(180deg);
 }

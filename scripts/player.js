@@ -25,12 +25,12 @@ class Player {
         this.sprite = newPlayer
     }
   
+  
     update() {
         if (this.isJumping) {
             this.velocityY -= this.gravity
             this.astroTop -= this.velocityY
             this.sprite.style.top = `${this.astroTop}px`
-            
             if(this.astroTop >= 289) {
                 this.isJumping = false
                 this.sprite.classList.remove('jumping')
@@ -42,12 +42,13 @@ class Player {
   
       jump() {
           if (this.isJumping) return
+  
           this.isJumping = true
           this.sprite.classList.add('jumping')
 
           this.velocityY = this.jumpStrength
 
           this.jumpingSound.play()
-          this.jumpingSound.volume = 0.7
+          this.jumpingSound.volume = 0.8
       }
   }
