@@ -186,7 +186,7 @@ class Game {
 
     floorbg.style.width = '100%'
     floorbg.style.height = '100%'
-    floorbg.style.background = 'url("/assets/floorbg.png")'
+    floorbg.style.background = 'url("https://lextersaurus.github.io/ad-astra-game/assets/floorbg.png")'
 
     const keyframes = [
       { backgroundPosition: '200% 0' }
@@ -207,7 +207,7 @@ class Game {
 
     background.style.width = '100%'
     background.style.height = '100%'
-    background.style.background = 'url("/assets/purplebg.png")'
+    background.style.background = 'url("https://lextersaurus.github.io/ad-astra-game/assets/purplebg.png")'
 
     const keyframes = [
       { backgroundPosition: '200% 0' }
