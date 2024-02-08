@@ -27,9 +27,25 @@ body {
 #astronaut {
   width: 90px;
   height: 123px;
-  background-image: url(/assets/astronaut1.png);
   background-size: cover;
   position: absolute;
+  animation-name: runningAnimation;
+  animation-iteration-count: infinite;
+  animation-duration: 0.2s;
+}
+
+#astronaut.jumping {
+  animation-duration: 1s;
+}
+
+@keyframes runningAnimation {
+  0%, 49% {
+    background-image: url(/assets/astronaut1.png);
+  }
+  
+  50%, 100% {
+    background-image: url(/assets/astronaut2.png);
+  }
 }
 
 #game {
@@ -178,6 +194,13 @@ body {
   background-image: url(/assets/Meteor1.png);
   background-size: cover;
   position: absolute;
+  animation: meteoriteAnimation 2s infinite;
+}
+
+@keyframes meteoriteAnimation {
+  50% {
+    transform: rotate(-180deg);
+  }
 }
 
 .multiplier {

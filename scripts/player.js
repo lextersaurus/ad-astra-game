@@ -12,6 +12,7 @@ class Player {
         this.isDead = false
         this.jumpStrength = 22
         this.initialTop = y
+        this.jumpingSound = new Audio('assets/sounds/jump.wav')
         this.isMultiplier = false
     }
   
@@ -27,15 +28,12 @@ class Player {
   
     update() {
         if (this.isJumping) {
-            // a medida que avanza el 'tiempo' la gravedad empuja al astronauta hacia abajo (resta velocidad en el eje y poco a poco)
             this.velocityY -= this.gravity
-            // la posición del astronauta cambia conforme a su velocidad
             this.astroTop -= this.velocityY
             this.sprite.style.top = `${this.astroTop}px`
-            
-            // cuando el astranauta llega al suelo ya no está saltando y ya no tiene velocidad en el eje y
             if(this.astroTop >= 289) {
                 this.isJumping = false
+                this.sprite.classList.remove('jumping')
                 this.velocityY = 0
                 this.sprite.style.top = `${this.initialTop}px`
             }
@@ -46,6 +44,11 @@ class Player {
           if (this.isJumping) return
   
           this.isJumping = true
+          this.sprite.classList.add('jumping')
+
           this.velocityY = this.jumpStrength
+
+          this.jumpingSound.play()
+          this.jumpingSound.volume = 0.8
       }
   }
