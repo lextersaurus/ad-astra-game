@@ -1,5 +1,5 @@
 window.onload = () => {
-   const musicAdAstra = new Audio('/assets/sounds/Race-to-Mars.mp3');
+   const musicAdAstra = new Audio('./assets/sounds/Race-to-Mars.mp3');
 
    musicAdAstra.loop = true
    musicAdAstra.play()

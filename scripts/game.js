@@ -7,7 +7,7 @@ class Game {
     this.score = 0
     this.timerScore = null
     this.currentScore
-    this.powerUpSound = new Audio('assets/sounds/poweruptaken.wav')
+    this.powerUpSound = new Audio('./assets/sounds/poweruptaken.wav')
   }
 
   addAstronaut() {

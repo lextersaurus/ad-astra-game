@@ -12,7 +12,7 @@ class Player {
         this.isDead = false
         this.jumpStrength = 22
         this.initialTop = y
-        this.jumpingSound = new Audio('assets/sounds/jump.wav')
+        this.jumpingSound = new Audio('./assets/sounds/jump.wav')
         this.isMultiplier = false
     }
   
