@@ -23,13 +23,11 @@ Use the spacebar to jump!
 
 ## Screenshots
 
-![image](https://github.com/attetorres/ad-astra-game/assets/155771629/2d644272-06d0-4b24-bd47-904b4542ae78)
 
+![image1](https://github.com/lextersaurus/ad-astra-game/assets/155771629/c3e9ae66-c140-4d1f-9d81-bf42cc06f961)
 
-![image2(1)](https://github.com/attetorres/ad-astra-game/assets/155771629/d41c21ae-0b6d-49b6-926e-fa243812264e)
+![image2](https://github.com/lextersaurus/ad-astra-game/assets/155771629/6fc0c7f5-9c48-460c-b031-2cd93b8c67ca)
 
+![image3](https://github.com/lextersaurus/ad-astra-game/assets/155771629/6b300dfd-241a-412d-b944-0a3324559991)
 
-![image3](https://github.com/attetorres/ad-astra-game/assets/155771629/52cf2da8-b8ac-4ee5-b8ed-ff1a76076f4a)
-
-
-![imagego](https://github.com/attetorres/ad-astra-game/assets/155771629/ac67c355-507b-414b-9ecf-251388f170c3)
+![imagego](https://github.com/lextersaurus/ad-astra-game/assets/155771629/6b3d56cd-148c-4735-b696-d1df99f30118)
